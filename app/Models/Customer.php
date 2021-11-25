@@ -3,15 +3,25 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Jenssegers\Mongodb\Eloquent\Model as EloquentModel;
+// use Jenssegers\Mongodb\Eloquent\Model as Model;
 
-class Customer extends EloquentModel
+class Customer extends BaseModel
 {
     use HasFactory;
-    protected $connection = 'mongodb';
-	protected $collection = 'Customers';
+	protected $collection = 'customers';
 
     protected $fillable = [
-        'name', 'detail'
+        '_id',
+        'identification',
+        'identification_type',
+        'photo',
+        'name',
+        'birthday',
+        'address',
+        'email',
+        'phone',
+        'gender',
+        'employee_id',
+        'closet_no',
     ];
 }
