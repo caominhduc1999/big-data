@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Customer extends BaseModel
 {
     use HasFactory;
-	protected $collection = 'Customers';
+	protected $collection = 'customers';
 
     protected $fillable = [
         '_id',
