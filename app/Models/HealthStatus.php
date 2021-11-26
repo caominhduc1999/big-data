@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Health_Status extends BaseModel
+class HealthStatus extends BaseModel
 {
     use HasFactory;
     protected $collection = 'health_status';

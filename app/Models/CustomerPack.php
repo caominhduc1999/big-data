@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-//use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
-class Customer_Pack extends BaseModel
+class CustomerPack extends BaseModel
 {
     use HasFactory;
     protected $collection = 'customer_packs';

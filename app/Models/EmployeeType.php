@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-//use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
-class Employee_Type extends BaseModel
+class EmployeeType extends BaseModel
 {
     use HasFactory;
     protected $collection = 'employee_types';
