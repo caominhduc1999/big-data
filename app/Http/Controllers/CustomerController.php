@@ -4,86 +4,79 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use App\Services\CustomerService;
+use Exception;
+use Illuminate\Support\Facades\Log;
 
 class CustomerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $customerService;
+
+    public function __construct(CustomerService $customerService)
+    {
+        $this->customerService = $customerService;
+    }
+
     public function index()
     {
-        $customers = Customer::all();
-        
-        return view('customers.index',compact('customers'));
+        $customers = $this->customerService->getAll();
+
+        return view('pages.customers.index',compact('customers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        return view('customers.create');
+        return view('pages.customers.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        Customer::create($request->all());
+        try {
+            $this->customerService->store($request->all());
 
-        return redirect()->route('customers.index');
+            return redirect()->route('pages.customers.index');
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
+            
+            return redirect()->route('pages.customers.index');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
     public function show(Customer $customer)
     {
-        return view('customers.show',compact('customer'));
+        return view('pages.customers.show',compact('customer'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Customer $customer)
     {
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, Customer $customer)
     {
-        //
+        try {
+            $this->customerService->update($customer, $request->all());
+
+            return redirect()->route('pages.customers.index');
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
+
+            return redirect()->route('pages.customers.index');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy(Customer $customer)
     {
-        //
+        try {
+            $this->customerService->destroy($customer);
+
+            return redirect()->route('pages.customers.index');
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
+
+            return redirect()->route('pages.customers.index');
+        }
     }
 }
