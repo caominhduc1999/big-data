@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/jquery.datetimepicker.min.css')}}">
     @endsection
 
     @section('content')
@@ -20,7 +21,7 @@
                         <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <form action="{{ route('customers.store') }}" method="POST">
+                                    <form action="{{ route('employees.store') }}" method="POST" autocomplete="off">
                                         @csrf
                                          <div class="row">
                                             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -32,30 +33,26 @@
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
+                                                    <strong>Employee Type:</strong>
+                                                    <select class="col-xs-12 col-sm-12 col-md-12 form-group" name="employee_type_id" id="">
+                                                        @foreach($type as $key => $value)
+                                                        <option value="{{$value->_id}}">{{$value->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <div class="form-group">
                                                     <strong>Birthday:</strong>
-                                                    <input type="text" name="birthday" value="{{old('birthday')}}" class="form-control" placeholder="Birthday">
+                                                    <input type="text" name="birthday" value="{{old('birthday')}}" class="form-control datetimepicker" placeholder="Birthday">
                                                     <span class="alert-danger"><?php echo $errors->first('birthday'); ?></span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
-                                                    <strong>Address:</strong>
-                                                    <input type="text" name="address" value="{{old('address')}}" class="form-control" placeholder="Address">
-                                                    <span class="alert-danger"><?php echo $errors->first('address'); ?></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <div class="form-group">
-                                                    <strong>Email:</strong>
-                                                    <input type="text" name="email" value="{{old('email')}}" class="form-control" placeholder="Email">
-                                                    <span class="alert-danger"><?php echo $errors->first('email'); ?></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <div class="form-group">
-                                                    <strong>Phone:</strong>
-                                                    <input type="text" name="phone" value="{{old('phone')}}" class="form-control" placeholder="Phone">
-                                                    <span class="alert-danger"><?php echo $errors->first('phone'); ?></span>
+                                                    <strong>Hire Date:</strong>
+                                                    <input type="text" name="hire_date"  value="{{old('hire_date')}}" class="form-control datetimepicker" placeholder="hire date">
+                                                    <span class="alert-danger"><?php echo $errors->first('hire_date'); ?></span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -103,6 +100,7 @@
     <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/jquery.datetimepicker.full.js') }}"></script>
 
     <script>
         $(function() {
@@ -113,5 +111,14 @@
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
+
+        $('.datetimepicker').datetimepicker({
+            autoclose: true,
+             timepicker :false,
+             datepicker :true,
+             format : 'd/m/Y',
+        });
+        $.datetimepicker.setlocale('vi');
+
     </script>
     @endsection

@@ -7,7 +7,13 @@ use Illuminate\Support\ServiceProvider;
 class RepositoryServiceProvider extends ServiceProvider
 {
     private $models = [
-        'Customer'
+        'Customer',
+        'Employee',
+        'EmployeeType',
+        'CustomerType',
+        'CustomerPack',
+        'Service',
+        'HealthStatus'
     ];
 
     public function register()

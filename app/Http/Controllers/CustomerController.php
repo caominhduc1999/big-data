@@ -6,6 +6,7 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Services\CustomerService;
 use Exception;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
 
 class CustomerController extends Controller
@@ -31,14 +32,27 @@ class CustomerController extends Controller
 
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all() ,[
+            'name' => 'required',
+            'birthday' => 'required',
+            'address' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'gender' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return redirect('customers/edit')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
         try {
             $this->customerService->store($request->all());
 
-            return redirect()->route('pages.customers.index');
+            return redirect()->route('customers.index');
         } catch (Exception $e) {
             Log::error($e->getMessage());
-            
-            return redirect()->route('pages.customers.index');
+
+            return redirect()->route('customers.index');
         }
     }
 
@@ -47,36 +61,53 @@ class CustomerController extends Controller
         return view('pages.customers.show',compact('customer'));
     }
 
-    public function edit(Customer $customer)
+    public function edit($id ,Customer $customer)
     {
-
+        $item = Customer::find($id);
+        return view('pages.customers.edit',['customer' => $item]);
     }
 
-    
-    public function update(Request $request, Customer $customer)
-    {
-        try {
-            $this->customerService->update($customer, $request->all());
 
-            return redirect()->route('pages.customers.index');
+    public function update(Request $request)
+    {
+        $validator = Validator::make($request->all() ,[
+            'name' => 'required',
+            'birthday' => 'required',
+            'address' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'gender' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return redirect('customers/create')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        try {
+            $this->customerService->update($request->id, $request->all());
+
+            return redirect()->route('customers.index');
         } catch (Exception $e) {
             Log::error($e->getMessage());
 
-            return redirect()->route('pages.customers.index');
+            return redirect()->route('customers.index');
         }
     }
 
-   
-    public function destroy(Customer $customer)
+
+    public function destroy($id)
     {
-        try {
-            $this->customerService->destroy($customer);
+        $item = Customer::find($id);
+        $item->delete();
+        return redirect()->route('customers.index')->with('message','Item delete successfully !');
+        // try {
+        //     $this->customerService->destroy($customer);
 
-            return redirect()->route('pages.customers.index');
-        } catch (Exception $e) {
-            Log::error($e->getMessage());
+        //     return redirect()->route('customers.index');
+        // } catch (Exception $e) {
+        //     Log::error($e->getMessage());
 
-            return redirect()->route('pages.customers.index');
-        }
+        //     return redirect()->route('customers.index');
+        // }
     }
 }

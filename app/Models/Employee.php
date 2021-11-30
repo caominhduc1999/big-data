@@ -14,7 +14,7 @@ class Employee extends BaseModel
         '_id',
         'employee_type_id',
         'name',
-        'dob',
+        'birthday',
         'gender',
         'hire_date',
     ];
