@@ -14,7 +14,7 @@
                 <div class="card-header">
                     <div class="box-header">
                         <div class="col-sm-12">
-                            <a class="btn btn-success" href="{{route('customers.create')}}">
+                            <a class="btn btn-success" href="{{route('employee_types.create')}}">
                             	<!-- <i class="fa fa-plus"></i> --> Thêm mới
                             </a>
                         </div>
@@ -30,11 +30,6 @@
                                         <tr role="row">
                                             <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">ID</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Name</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Birthday</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Adđress</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Email</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Phone</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Gender</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Action</th>
                                             <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Platform(s)</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Engine version</th>
@@ -42,18 +37,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($customers as $key => $customer)
+                                        @foreach($employee_types as $key => $type)
                                             <tr class="{{ $key % 2 == 0 ? 'odd' : 'even' }}">
-                                                <td class="dtr-control sorting_1" tabindex="0">{{ $customer->_id }}</td>
-                                                <td>{{ $customer->name }}</td>
-                                                <td>{{ $customer->birthday }}</td>
-                                                <td>{{ $customer->address }}</td>
-                                                <td>{{ $customer->email }}</td>
-                                                <td>{{ $customer->phone }}</td>
-                                                <td>{{ $customer->gender }}</td>
+                                                <td class="dtr-control sorting_1" tabindex="0">{{ $type->_id }}</td>
+                                                <td>{{ $type->name }}</td>
                                                 <td>
-                                                    <a href="{{ route('editCustomer',['id' =>  $customer->_id])}}">Edit</a>
-                                                    <a href="{{ route('deleteCustomer',['id' =>  $customer->_id])}}" onclick="return confirm('Are you sure to delete ?')">Delete</a>
+                                                    <a href="{{ route('editEmployeeType',['id' =>  $type->_id])}}">Edit</a>
+                                                    <a href="{{ route('deleteEmployeeType',['id' =>  $type->_id])}}" onclick="return confirm('Are you sure to delete ?')">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach

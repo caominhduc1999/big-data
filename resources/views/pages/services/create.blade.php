@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/jquery.datetimepicker.min.css')}}">
     @endsection
 
     @section('content')
@@ -20,7 +21,7 @@
                         <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <form action="{{ route('customers.store') }}" method="POST">
+                                    <form action="{{ route('services.store') }}" method="POST" autocomplete="off">
                                         @csrf
                                          <div class="row">
                                             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -32,43 +33,19 @@
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
-                                                    <strong>Birthday:</strong>
-                                                    <input type="text" name="birthday" value="{{old('birthday')}}" class="form-control" placeholder="Birthday">
-                                                    <span class="alert-danger"><?php echo $errors->first('birthday'); ?></span>
+                                                    <strong>Description:</strong>
+                                                    <input type="text" name="description" class="form-control" value="{{old('description')}}" placeholder="Name">
+                                                    <span class="alert-danger"><?php echo $errors->first('description'); ?></span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
-                                                    <strong>Address:</strong>
-                                                    <input type="text" name="address" value="{{old('address')}}" class="form-control" placeholder="Address">
-                                                    <span class="alert-danger"><?php echo $errors->first('address'); ?></span>
+                                                    <strong>Price:</strong>
+                                                    <input type="text" name="price" class="form-control" value="{{old('price')}}" placeholder="Name">
+                                                    <span class="alert-danger"><?php echo $errors->first('price'); ?></span>
                                                 </div>
                                             </div>
-                                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <div class="form-group">
-                                                    <strong>Email:</strong>
-                                                    <input type="text" name="email" value="{{old('email')}}" class="form-control" placeholder="Email">
-                                                    <span class="alert-danger"><?php echo $errors->first('email'); ?></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <div class="form-group">
-                                                    <strong>Phone:</strong>
-                                                    <input type="text" name="phone" value="{{old('phone')}}" class="form-control" placeholder="Phone">
-                                                    <span class="alert-danger"><?php echo $errors->first('phone'); ?></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <div class="form-group">
-                                                    <strong>Gender:</strong>
-                                                    <select name="gender" id="">
-                                                        <option value="">--Chọn--</option>
-                                                        <option value="Male">Nam</option>
-                                                        <option value="Female">Nữ</option>
-                                                    </select>
-                                                    <span class="alert-danger"><?php echo $errors->first('gender'); ?></span>
-                                                </div>
-                                            </div>
+
                                             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                                     <button type="submit" class="btn btn-primary">Submit</button>
                                             </div>
@@ -103,6 +80,7 @@
     <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/jquery.datetimepicker.full.js') }}"></script>
 
     <script>
         $(function() {
@@ -113,5 +91,14 @@
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
+
+        $('.datetimepicker').datetimepicker({
+            autoclose: true,
+             timepicker :false,
+             datepicker :true,
+             format : 'd/m/Y',
+        });
+        $.datetimepicker.setlocale('vi');
+
     </script>
     @endsection

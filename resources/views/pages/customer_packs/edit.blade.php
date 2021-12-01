@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/jquery.datetimepicker.min.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
     @endsection
 
     @section('content')
@@ -20,57 +22,38 @@
                         <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <form action="{{ route('customers.store') }}" method="POST">
+                                    <form action="{{ route('updateCustomerPack') }}"  method="POST" autocomplete="off">
                                         @csrf
                                          <div class="row">
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <strong>Name:</strong>
-                                                    <input type="text" name="name" class="form-control" value="{{old('name')}}" placeholder="Name">
-                                                    <span class="alert-danger"><?php echo $errors->first('name'); ?></span>
+                                                    <input type="hidden" name="id" class="form-control" value="{{$customer_packs->id}}">
+                                                        <select class="selectpicker" name="customer_id" style="width:300px;"> >
+                                                            @foreach($customers as $key => $customer)
+                                                                <option value="{{ $customer->_id}}">{{$customer->name}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    <span class="alert-danger"><?php echo $errors->first('customer_id'); ?></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <div class="form-group">
+                                                    <strong>Desciprion:</strong>
+                                                    <input type="text" name="start_date" class="form-control datetimepicker" value="{{$customer_packs->start_date}}" placeholder="Desciption">
+                                                    <span class="alert-danger"><?php echo $errors->first('start_date'); ?></span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
-                                                    <strong>Birthday:</strong>
-                                                    <input type="text" name="birthday" value="{{old('birthday')}}" class="form-control" placeholder="Birthday">
-                                                    <span class="alert-danger"><?php echo $errors->first('birthday'); ?></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <div class="form-group">
-                                                    <strong>Address:</strong>
-                                                    <input type="text" name="address" value="{{old('address')}}" class="form-control" placeholder="Address">
-                                                    <span class="alert-danger"><?php echo $errors->first('address'); ?></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <div class="form-group">
-                                                    <strong>Email:</strong>
-                                                    <input type="text" name="email" value="{{old('email')}}" class="form-control" placeholder="Email">
-                                                    <span class="alert-danger"><?php echo $errors->first('email'); ?></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <div class="form-group">
-                                                    <strong>Phone:</strong>
-                                                    <input type="text" name="phone" value="{{old('phone')}}" class="form-control" placeholder="Phone">
-                                                    <span class="alert-danger"><?php echo $errors->first('phone'); ?></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <div class="form-group">
-                                                    <strong>Gender:</strong>
-                                                    <select name="gender" id="">
-                                                        <option value="">--Chọn--</option>
-                                                        <option value="Male">Nam</option>
-                                                        <option value="Female">Nữ</option>
-                                                    </select>
-                                                    <span class="alert-danger"><?php echo $errors->first('gender'); ?></span>
+                                                    <strong>Desciprion:</strong>
+                                                    <input type="text" name="end_date" class="form-control datetimepicker" value="{{$customer_packs->end_date}}" placeholder="Desciption">
+                                                    <span class="alert-danger"><?php echo $errors->first('end_date'); ?></span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                    <button type="submit" class="btn btn-primary">Edit</button>
                                             </div>
                                         </div>
 
@@ -103,9 +86,14 @@
     <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-
+    <script src="{{ asset('assets/plugins/jquery.datetimepicker.full.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script>
         $(function() {
+            var model = <?php echo json_encode([
+                'item' => $item,
+            ]) ?>;
+        $('[name="customer_id"]').val(model.item.customer_id).attr('selected',true);
             $("#example1").DataTable({
                 "responsive": true,
                 "lengthChange": false,
@@ -113,5 +101,15 @@
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
+        $(document).ready(function() {
+            $('.selectpicker').select2();
+        });
+        $('.datetimepicker').datetimepicker({
+            autoclose: true,
+             timepicker :false,
+             datepicker :true,
+             format : 'd/m/Y',
+        });
+        $.datetimepicker.setlocale('vi');
     </script>
     @endsection

@@ -20,48 +20,49 @@
                         <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <form action="{{ route('customers.store') }}" method="POST">
+                                    <form action="{{ route('updateCustomer') }}"  method="POST">
                                         @csrf
                                          <div class="row">
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <strong>Name:</strong>
-                                                    <input type="text" name="name" class="form-control" value="{{old('name')}}" placeholder="Name">
+                                                    <input type="hidden" name="id" class="form-control" value="{{$customer->id}}">
+                                                    <input type="text" name="name" class="form-control" value="{{$customer->name}}" placeholder="Name">
                                                     <span class="alert-danger"><?php echo $errors->first('name'); ?></span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <strong>Birthday:</strong>
-                                                    <input type="text" name="birthday" value="{{old('birthday')}}" class="form-control" placeholder="Birthday">
+                                                    <input type="text" name="birthday" value="{{$customer->birthday}}" class="form-control" placeholder="Birthday">
                                                     <span class="alert-danger"><?php echo $errors->first('birthday'); ?></span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <strong>Address:</strong>
-                                                    <input type="text" name="address" value="{{old('address')}}" class="form-control" placeholder="Address">
+                                                    <input type="text" name="address" value="{{$customer->address}}" class="form-control" placeholder="Address">
                                                     <span class="alert-danger"><?php echo $errors->first('address'); ?></span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <strong>Email:</strong>
-                                                    <input type="text" name="email" value="{{old('email')}}" class="form-control" placeholder="Email">
+                                                    <input type="text" name="email" value="{{$customer->email}}" class="form-control" placeholder="Email">
                                                     <span class="alert-danger"><?php echo $errors->first('email'); ?></span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <strong>Phone:</strong>
-                                                    <input type="text" name="phone" value="{{old('phone')}}" class="form-control" placeholder="Phone">
+                                                    <input type="text" name="phone" value="{{$customer->phone}}" class="form-control" placeholder="Phone">
                                                     <span class="alert-danger"><?php echo $errors->first('phone'); ?></span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <strong>Gender:</strong>
-                                                    <select name="gender" id="">
+                                                    <select name="gender" value="{{$customer->gender}}" id="">
                                                         <option value="">--Chọn--</option>
                                                         <option value="Male">Nam</option>
                                                         <option value="Female">Nữ</option>
@@ -70,7 +71,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                    <button type="submit" class="btn btn-primary">Edit</button>
                                             </div>
                                         </div>
 
