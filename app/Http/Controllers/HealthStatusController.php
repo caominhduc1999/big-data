@@ -6,6 +6,7 @@ use App\Models\HealthStatus;
 use Illuminate\Http\Request;
 use App\Services\HealthStatusService;
 use App\Services\CustomerService;
+use App\Services\UserService;
 use Exception;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
@@ -16,7 +17,7 @@ class HealthStatusController extends Controller
     protected $customerService;
 
 
-    public function __construct(HealthStatusService $healthStatusService , CustomerService $customerService )
+    public function __construct(HealthStatusService $healthStatusService , UserService $customerService )
     {
         $this->healthStatusService = $healthStatusService;
         $this->customerService = $customerService;

@@ -40,14 +40,14 @@
 
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
-                                                    <strong>Desciprion:</strong>
+                                                    <strong>Start date:</strong>
                                                     <input type="text" name="start_date" class="form-control datetimepicker" value="{{$customer_packs->start_date}}" placeholder="Desciption">
                                                     <span class="alert-danger"><?php echo $errors->first('start_date'); ?></span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
-                                                    <strong>Desciprion:</strong>
+                                                    <strong>End date:</strong>
                                                     <input type="text" name="end_date" class="form-control datetimepicker" value="{{$customer_packs->end_date}}" placeholder="Desciption">
                                                     <span class="alert-danger"><?php echo $errors->first('end_date'); ?></span>
                                                 </div>

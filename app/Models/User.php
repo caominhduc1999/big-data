@@ -4,12 +4,25 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Jenssegers\Mongodb\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    public const ADMIN_ROLE = 0;
+    public const USER_ROLE = 1;
+
+    public const ROLES = [
+        0 => 'ADMIN',
+        1 => 'USER'
+    ];
+
+    public const GENDERS = [
+        0 => 'Male',
+        1 => 'Female'
+    ];
+
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -18,9 +31,16 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
+        '_id',
         'name',
         'email',
         'password',
+        'role',
+        'name',
+        'birthday',
+        'address',
+        'phone',
+        'gender',
     ];
 
     /**

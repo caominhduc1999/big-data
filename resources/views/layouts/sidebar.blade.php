@@ -36,53 +36,63 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Quản lý
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
+                            <a href="/users" class="nav-link {{ request()->is('users*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>User</p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="customers" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Khách hàng</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="employees" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Nhân viên</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="employee_types" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Loại nhân viên</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="customer_types" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Loại khách hàng</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="customer_packs" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Khách hàng - Dịch vụ</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="services" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Dịch vụ</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
-
+                        <li class="nav-item">
+                            <a href="/employees" class="nav-link {{ request()->is('employees*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Nhân viên</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/employee_types" class="nav-link {{ request()->is('employee_types*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Loại nhân viên</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/customer_types" class="nav-link {{ request()->is('customer_types*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Loại khách hàng</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/customer_packs" class="nav-link {{ request()->is('customer_packs*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Khách hàng - Dịch vụ</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/services" class="nav-link {{ request()->is('services*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Dịch vụ</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/attendances" class="nav-link {{ request()->is('attendances*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Checkin</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/qr-code" class="nav-link {{ request()->is('qr-code*') ? 'active' : '' }}">
+                            <i class="nav-icon far fa-image"></i>
+                            <p>
+                                QR CODE
+                            </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/logout" class="nav-link">
+                            <i class="nav-icon far fa-image"></i>
+                            <p>
+                                Logout
+                            </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

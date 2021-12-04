@@ -20,7 +20,7 @@
                         <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <form action="{{ route('customers.store') }}" method="POST">
+                                    <form action="{{ route('users.store') }}" method="POST">
                                         @csrf
                                          <div class="row">
                                             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -33,7 +33,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <strong>Birthday:</strong>
-                                                    <input type="text" name="birthday" value="{{old('birthday')}}" class="form-control" placeholder="Birthday">
+                                                    <input type="date" name="birthday" value="{{old('birthday')}}" class="form-control" placeholder="Birthday">
                                                     <span class="alert-danger"><?php echo $errors->first('birthday'); ?></span>
                                                 </div>
                                             </div>
@@ -60,13 +60,31 @@
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
+                                                    <strong>Password:</strong>
+                                                    <input type="password" name="password" value="{{old('password')}}" class="form-control" placeholder="Password">
+                                                    <span class="alert-danger"><?php echo $errors->first('password'); ?></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <div class="form-group">
                                                     <strong>Gender:</strong>
                                                     <select name="gender" id="">
                                                         <option value="">--Chọn--</option>
-                                                        <option value="Male">Nam</option>
-                                                        <option value="Female">Nữ</option>
+                                                        <option value="0">Nam</option>
+                                                        <option value="1">Nữ</option>
                                                     </select>
                                                     <span class="alert-danger"><?php echo $errors->first('gender'); ?></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <div class="form-group">
+                                                    <strong>Roles:</strong>
+                                                    <select name="role" id="">
+                                                        <option value="">--Chọn--</option>
+                                                        <option value="0">ADMIN</option>
+                                                        <option value="1">USER</option>
+                                                    </select>
+                                                    <span class="alert-danger"><?php echo $errors->first('role'); ?></span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
