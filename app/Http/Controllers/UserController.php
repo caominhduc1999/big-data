@@ -2,32 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Customer;
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\Services\CustomerService;
+use App\Services\UserService;
 use Exception;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
 
-class CustomerController extends Controller
+class UserController extends Controller
 {
-    protected $customerService;
+    protected $userService;
 
-    public function __construct(CustomerService $customerService)
+    public function __construct(UserService $userService)
     {
-        $this->customerService = $customerService;
+        $this->userService = $userService;
     }
 
     public function index()
     {
-        $customers = $this->customerService->getAll();
+        $users = $this->userService->getAll();
 
-        return view('pages.customers.index',compact('customers'));
+        return view('pages.users.index',compact('users'));
     }
 
     public function create()
     {
-        return view('pages.customers.create');
+        return view('pages.users.create');
     }
 
     public function store(Request $request)
@@ -39,32 +39,34 @@ class CustomerController extends Controller
             'email' => 'required',
             'phone' => 'required',
             'gender' => 'required',
+            'password' => 'required',
+            'role' => 'required'
         ]);
         if ($validator->fails()) {
-            return redirect('customers/edit')
+            return redirect('users/edit')
                         ->withErrors($validator)
                         ->withInput();
         }
         try {
-            $this->customerService->store($request->all());
+            $this->userService->store($request->all());
 
-            return redirect()->route('customers.index');
+            return redirect()->route('users.index');
         } catch (Exception $e) {
             Log::error($e->getMessage());
 
-            return redirect()->route('customers.index');
+            return redirect()->route('users.index');
         }
     }
 
-    public function show(Customer $customer)
+    public function show(User $user)
     {
-        return view('pages.customers.show',compact('customer'));
+        return view('pages.users.show',compact('user'));
     }
 
-    public function edit($id ,Customer $customer)
+    public function edit($id ,User $user)
     {
-        $item = Customer::find($id);
-        return view('pages.customers.edit',['customer' => $item]);
+        $item = User::find($id);
+        return view('pages.users.edit',['user' => $item]);
     }
 
 
@@ -77,37 +79,38 @@ class CustomerController extends Controller
             'email' => 'required',
             'phone' => 'required',
             'gender' => 'required',
+            'role' => 'required'
         ]);
         if ($validator->fails()) {
-            return redirect('customers/create')
+            return redirect('users/editUser/' . $request->id)
                         ->withErrors($validator)
                         ->withInput();
         }
         try {
-            $this->customerService->update($request->id, $request->all());
+            $this->userService->update($request->id, $request->all());
 
-            return redirect()->route('customers.index');
+            return redirect()->route('users.index');
         } catch (Exception $e) {
             Log::error($e->getMessage());
 
-            return redirect()->route('customers.index');
+            return redirect()->route('users.index');
         }
     }
 
 
     public function destroy($id)
     {
-        $item = Customer::find($id);
+        $item = User::find($id);
         $item->delete();
-        return redirect()->route('customers.index')->with('message','Item delete successfully !');
+        return redirect()->route('Users.index')->with('message','Item delete successfully !');
         // try {
-        //     $this->customerService->destroy($customer);
+        //     $this->UserService->destroy($User);
 
-        //     return redirect()->route('customers.index');
+        //     return redirect()->route('Users.index');
         // } catch (Exception $e) {
         //     Log::error($e->getMessage());
 
-        //     return redirect()->route('customers.index');
+        //     return redirect()->route('Users.index');
         // }
     }
 }

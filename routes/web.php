@@ -1,12 +1,15 @@
 <?php
 
-use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\EmployeeTypeController;
 use App\Http\Controllers\CustomerTypeController;
 use App\Http\Controllers\CustomerPackController;
 use App\Http\Controllers\HealthStatusController;
+use App\Http\Controllers\QrCodeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -23,9 +26,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pages.index');
-});
+})->name('home');
 
-Route::resource('customers', CustomerController::class);
+Route::resource('users', UserController::class);
 Route::resource('employees', EmployeeController::class);
 Route::resource('services', ServiceController::class);
 Route::resource('employee_types', EmployeeTypeController::class);
@@ -33,12 +36,14 @@ Route::resource('customer_types', CustomerTypeController::class);
 Route::resource('customer_packs', CustomerPackController::class);
 Route::resource('health_statuses', HealthStatusController::class);
 
-Route::group(['prefix' =>'/customers'] , function () {
+Route::group(['prefix' =>'/users'] , function () {
     // Route::get('/create', 'CustomerController@create');
-    Route::post('/create', 'App\Http\Controllers\CustomerController@store');
-    Route::get('/editCustomer/{id}', 'App\Http\Controllers\CustomerController@edit')->name('editCustomer');
-    Route::post('/updateCustomer','App\Http\Controllers\CustomerController@update')->name('updateCustomer');
-    Route::get('/deleteCustomer/{id}','App\Http\Controllers\CustomerController@destroy')->name('deleteCustomer');
+    // Route::get('/', 'App\Http\Controllers\UserController@index');
+    // Route::get('/create', 'App\Http\Controllers\UserController@create')->name('users.create');
+    Route::post('/create', 'App\Http\Controllers\UserController@store');
+    Route::get('/editUser/{id}', 'App\Http\Controllers\UserController@edit')->name('editUser');
+    Route::post('/updateUser','App\Http\Controllers\UserController@update')->name('updateUser');
+    Route::get('/deleteUser/{id}','App\Http\Controllers\UserController@destroy')->name('deleteUser');
 });
 
 Route::group(['prefix' =>'/employees'] , function () {
@@ -89,3 +94,18 @@ Route::group(['prefix' =>'/health_statuses'] , function () {
     Route::post('/updateStatus','App\Http\Controllers\HealthStatusController@update')->name('updateStatus');
     Route::get('/deleteStatus/{id}','App\Http\Controllers\HealthStatusController@destroy')->name('deleteStatus');
 });
+
+Route::group(['prefix' => 'attendances'], function () {
+    Route::get('/', [AttendanceController::class, 'index']);
+});
+
+Route::group(['prefix' => '/qr-code'], function() {
+    Route::get('/', [QrCodeController::class, 'index'])->name('qr_code.index');
+    Route::get('/checkin', [QrCodeController::class, 'store']);
+});
+
+Route::get('login', [AuthController::class, 'getLogin'])->name('get-login');
+Route::post('login', [AuthController::class, 'postLogin'])->name('post-login');
+Route::get('login', [AuthController::class, 'getLogin']);
+Route::get('logout', [AuthController::class, 'logout']);
+Route::get('fake-user', [AuthController::class, 'fakeUser']);

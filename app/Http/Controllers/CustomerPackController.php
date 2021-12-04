@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\CustomerPackService;
 use App\Services\CustomerService;
 use App\Services\ServiceService;
+use App\Services\UserService;
 use Exception;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
@@ -18,7 +19,7 @@ class CustomerPackController extends Controller
 
     public function __construct(
         CustomerPackService $customerPackService ,
-        CustomerService $customerService,
+        UserService $customerService,
         ServiceService $serviceService){
         $this->customerPackService = $customerPackService;
         $this->customerService = $customerService;
