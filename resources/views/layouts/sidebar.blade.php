@@ -1,22 +1,24 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="../../index3.html" class="brand-link">
-                <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <a href="/" class="brand-link">
+                <img src="https://assets.turbologo.com/blog/en/2020/12/19084212/fitness-2.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light">Gym Fitness Center</span>
             </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user (optional) -->
+                @if(\Auth::check())
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                            <img src="/images/{{ \Auth::user()->image }}" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block">{{ \Auth::user()->name }}</a>
                     </div>
                 </div>
+                @endif
 
                 <!-- SidebarSearch Form -->
                 <div class="form-inline">
@@ -41,12 +43,12 @@
                                 <p>User</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="/employees" class="nav-link {{ request()->is('employees*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Nhân viên</p>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a href="/employee_types" class="nav-link {{ request()->is('employee_types*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
@@ -69,6 +71,12 @@
                             <a href="/services" class="nav-link {{ request()->is('services*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Dịch vụ</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/exercises" class="nav-link {{ request()->is('exercises*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Bài tập</p>
                             </a>
                         </li>
                         <li class="nav-item">

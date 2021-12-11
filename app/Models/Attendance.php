@@ -12,6 +12,7 @@ class Attendance extends BaseModel
 
     protected $fillable = [
         '_id',
-        'user_id'
+        'user_id',
+        'updated_at'
     ];
 }

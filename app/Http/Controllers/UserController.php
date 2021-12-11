@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CustomerType;
+use App\Models\EmployeeType;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Services\UserService;
@@ -12,22 +14,33 @@ use Illuminate\Support\Facades\Log;
 class UserController extends Controller
 {
     protected $userService;
+    protected $customerType;
+    protected $employeeTypes;
 
-    public function __construct(UserService $userService)
-    {
+    public function __construct(
+        UserService $userService, 
+        CustomerType $customerType,
+        EmployeeType $employeeType
+    ) {
         $this->userService = $userService;
+        $this->customerType = $customerType;
+        $this->employeeType = $employeeType;
     }
 
     public function index()
     {
         $users = $this->userService->getAll();
+        $customerTypes = $this->customerType->all()->pluck('customer_type_name', 'id')->toArray();
+        $employeeTypes = $this->employeeType->all()->pluck('name', 'id')->toArray();
 
-        return view('pages.users.index',compact('users'));
+        return view('pages.users.index',compact('users', 'customerTypes', 'employeeTypes'));
     }
 
     public function create()
     {
-        return view('pages.users.create');
+        $customerTypes = $this->customerType->all();
+        $employeeTypes = $this->employeeType->all();
+        return view('pages.users.create',compact( 'customerTypes', 'employeeTypes'));
     }
 
     public function store(Request $request)
@@ -66,7 +79,9 @@ class UserController extends Controller
     public function edit($id ,User $user)
     {
         $item = User::find($id);
-        return view('pages.users.edit',['user' => $item]);
+        $customerTypes = $this->customerType->all();
+        $employeeTypes = $this->employeeType->all();
+        return view('pages.users.edit',['user' => $item, 'customerTypes' => $customerTypes, 'employeeTypes' => $employeeTypes]);
     }
 
 

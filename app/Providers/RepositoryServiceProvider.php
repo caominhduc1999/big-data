@@ -14,7 +14,8 @@ class RepositoryServiceProvider extends ServiceProvider
         'CustomerPack',
         'Service',
         'HealthStatus',
-        'Attendance'
+        'Attendance',
+        'Exercise'
     ];
 
     public function register()

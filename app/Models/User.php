@@ -14,13 +14,14 @@ class User extends Authenticatable
     public const USER_ROLE = 1;
 
     public const ROLES = [
-        0 => 'ADMIN',
-        1 => 'USER'
+        0 => 'Admin',
+        1 => 'Khách hàng',
+        2 => 'Nhân viên'
     ];
 
     public const GENDERS = [
-        0 => 'Male',
-        1 => 'Female'
+        0 => 'Nam',
+        1 => 'Nữ'
     ];
 
     use HasApiTokens, HasFactory, Notifiable;
@@ -41,6 +42,9 @@ class User extends Authenticatable
         'address',
         'phone',
         'gender',
+        'customer_type_id',
+        'employee_type_id',
+        'image'
     ];
 
     /**

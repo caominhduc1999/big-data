@@ -14,7 +14,7 @@
                 <div class="card-header">
                     <div class="box-header">
                         <div class="col-sm-12">
-                            <a class="btn btn-success" href="{{route('users.create')}}">
+                            <a class="btn btn-success" href="{{route('exercises.create')}}">
                             	<!-- <i class="fa fa-plus"></i> --> Thêm mới
                             </a>
                         </div>
@@ -28,45 +28,25 @@
                                 <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                                     <thead>
                                         <tr role="row">
-                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">STT</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Ảnh</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Tên</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Ngày sinh</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Vai trò</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Email</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">SĐT</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Giới tính</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Loại</th>
-                                            <th class="" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending"></th>
+                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">ID</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Name</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Description</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Action</th>
                                             <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Platform(s)</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Engine version</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($users as $key => $user)
+                                        @foreach($exercises as $key => $exercice)
                                             <tr class="{{ $key % 2 == 0 ? 'odd' : 'even' }}">
-                                                <td>{{ $key + 1 }}</td>
-                                                <!-- <td class="dtr-control sorting_1" tabindex="0">{{ $user->_id }}</td> -->
+                                                <td class="dtr-control sorting_1" tabindex="0">{{ $exercice->_id }}</td>
+                                                <td>{{ $exercice->name }}</td>
+                                                <td>{{ $exercice->video_link }}</td>
                                                 <td>
-                                                    <img width="50px" height="50px" src="/images/{{$user->image}}" alt="">
-                                                </td>
-                                                <td>{{ $user->name }}</td>
-                                                <td>{{ $user->birthday }}</td>
-                                                <td>{{ \App\Models\User::ROLES[$user->role] ?? '' }}</td>
-                                                <td>{{ $user->email }}</td>
-                                                <td>{{ $user->phone }}</td>
-                                                <td>{{ \App\Models\User::GENDERS[$user->gender] ?? '' }}</td>
-                                                <td>{{ 
-                                                    $user->customer_type_id != null 
-                                                    ? $customerTypes[$user->customer_type_id] 
-                                                    : ($user->employee_type_id != null 
-                                                        ? $employeeTypes[$user->employee_type_id] 
-                                                        : 'ADMIN')
-                                                }}</td>
-                                                <td>
-                                                    <a href="{{ route('editUser',['id' =>  $user->_id])}}">Edit</a>
-                                                    <a href="{{ route('deleteUser',['id' =>  $user->_id])}}" onclick="return confirm('Are you sure to delete ?')">Delete</a>
+                                                    <a href="{{ route('showExercise',['id' =>  $exercice->_id])}}">Show</a>
+                                                    <a href="{{ route('editExercise',['id' =>  $exercice->_id])}}">Edit</a>
+                                                    <a href="{{ route('deleteExercise',['id' =>  $exercice->_id])}}" onclick="return confirm('Are you sure to delete ?')">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\Attendance\AttendanceRepositoryInterface;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,10 +28,14 @@ class QrCodeController extends Controller
             $data = [
                 'user_id' => Auth::id()
             ];
-    
-            $this->attendanceService->store($data);
+            $visitor = $this->attendanceService->getTodayAttendance($data['user_id']);
+            if (!$visitor) {
+                $this->attendanceService->store($data);
+            } else {
+                $this->attendanceService->update($visitor->id, ['updated_at' => Carbon::now()]);
+            }
 
-            return redirect()->route('qr_code.index');
+            return redirect()->route('qr_code.index')->with('success', 'Checked in!');
         } catch (Exception $e) {
             Log::error($e->getMessage());
 

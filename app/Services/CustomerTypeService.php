@@ -6,7 +6,7 @@ use App\Repositories\CustomerType\CustomerTypeRepositoryInterface;
 
 class CustomerTypeService
 {
-    protected $employeeTypeRepository;
+    protected $customerTypeRepository;
 
     public function __construct(CustomerTypeRepositoryInterface $customerTypeRepository)
     {

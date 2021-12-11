@@ -22,4 +22,14 @@ class AttendanceService
     {
         return $this->attendanceRepository->store($data);
     }
+
+    public function getComerStatistic($date)
+    {
+        return $this->attendanceRepository->getComerStatistic($date);
+    }
+
+    public function getTodayAttendance($userId)
+    {
+        return $this->attendanceRepository->getTodayAttendance($userId);
+    }
 }
