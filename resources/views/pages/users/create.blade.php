@@ -20,7 +20,7 @@
                         <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('createUser') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                          <div class="row">
                                             <div class="col-xs-12 col-sm-12 col-md-12">

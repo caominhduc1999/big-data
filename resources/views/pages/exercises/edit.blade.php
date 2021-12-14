@@ -20,13 +20,13 @@
                         <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <form action="{{ route('updateCustomerType') }}"  method="POST" autocomplete="off">
+                                    <form action="{{ route('updateExercise') }}"  method="POST" autocomplete="off">
                                         @csrf
                                          <div class="row">
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <strong>Name:</strong>
-                                                    <input type="hidden" name="id" class="form-control" value="{{$exercise->id}}">
+                                                    <input type="hidden" name="id" class="form-control" value="{{$exercise->_id}}">
                                                     <input type="text" name="name" class="form-control" value="{{$exercise->name}}" placeholder="Name">
                                                     <span class="alert-danger"><?php echo $errors->first('name'); ?></span>
                                                 </div>

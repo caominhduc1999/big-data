@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['check-login']], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    
+
     Route::resource('users', UserController::class);
     Route::resource('employees', EmployeeController::class);
     Route::resource('services', ServiceController::class);
@@ -44,7 +44,7 @@ Route::group(['middleware' => ['check-login']], function () {
         // Route::get('/create', 'CustomerController@create');
         // Route::get('/', 'App\Http\Controllers\UserController@index');
         // Route::get('/create', 'App\Http\Controllers\UserController@create')->name('users.create');
-        Route::post('/create', 'App\Http\Controllers\UserController@store');
+        Route::post('/create', 'App\Http\Controllers\UserController@store')->name('createUser');
         Route::get('/editUser/{id}', 'App\Http\Controllers\UserController@edit')->name('editUser');
         Route::post('/updateUser','App\Http\Controllers\UserController@update')->name('updateUser');
         Route::get('/deleteUser/{id}','App\Http\Controllers\UserController@destroy')->name('deleteUser');

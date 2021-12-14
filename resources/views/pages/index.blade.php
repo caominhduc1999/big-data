@@ -63,7 +63,23 @@
   </div>
   <!-- ./col -->
 </div>
-<div>
+    <div class="form-group">
+      <label>Từ ngày</label>
+      <input onchange="filterData()" type="date" id="startDate" value="2021-12-02" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <label>Đến ngày</label>
+      <input onchange="filterData()" id="toDate" type="date" value="2021-12-07"  id="exampleInputPassword1" placeholder="Password">
+    </div>
+{{-- <div class="lewlew">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="text" class="form-control" name="from_date" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="text" class="form-control" name="to_date" id="exampleInputPassword1" placeholder="Password">
+    </div>
+  </div>
+<div> --}}
   <canvas id="myChart"></canvas>
 </div>
 @endsection
@@ -73,7 +89,9 @@
 <script>
   let comerDataset = @json($comerDataset);
 
-  const labels = Object.keys(comerDataset);
+    const labels = ['2021-12-02','2021-12-03','2021-12-04','2021-12-05','2021-12-06','2021-12-07','2021-12-08','2021-12-09','2021-12-10','2021-12-11'];
+    const datapoints = ['1','2','3','4','5',6,7,3,4,1,4,1];
+    const datapoints2 = ['3.2','4.1','5.2','6.2','7',2,2,2,4,1,4,1];
 
   const data = {
     labels: labels,
@@ -81,20 +99,56 @@
         label: 'Số người đến tập',
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgb(255, 99, 132)',
-        data: Object.values(comerDataset),
+        data: datapoints,
+      },
+      {
+        label: 'Doanh thu (triệu VNĐ)',
+        backgroundColor: 'rgb(99, 255, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: datapoints2,
       },
     ]
   };
 
   const config = {
-    type: 'line',
+    type: 'bar',
     data: data,
-    options: {}
+    options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  },
   };
 
   const myChart = new Chart(
     document.getElementById('myChart'),
     config
   );
+
+function filterData(){
+    const date = [...labels];
+    const startDate = document.getElementById('startDate');
+    const endDate = document.getElementById('toDate');
+
+    const indexStartDate = date.indexOf(startDate.value);
+    const indexEndDate = date.indexOf(endDate.value);
+
+    const filterDate = date.slice(indexStartDate, indexEndDate + 1 );
+    myChart.config.data.labels = filterDate;
+    myChart.update();
+
+    const dataPoint = [...datapoints];
+    const filterDatapoints = dataPoint.slice(indexStartDate , indexEndDate + 1);
+    myChart.config.data.datasets[0].data = filterDatapoints;
+    myChart.update();
+
+    const dataPoint2 = [...datapoints2];
+    const filterDatapoints2 = dataPoint2.slice(indexStartDate , indexEndDate + 1);
+    myChart.config.data.datasets[1].data = filterDatapoints2;
+    myChart.update();
+}
+filterData();
 </script>
 @endsection
