@@ -10,6 +10,7 @@ use App\Http\Controllers\CustomerPackController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\HealthStatusController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -116,6 +117,11 @@ Route::group(['middleware' => ['check-login']], function () {
         Route::get('/checkin', [QrCodeController::class, 'store']);
     });
 
+    Route::group(['prefix' => '/profile'], function() {
+        Route::get('/', [ProfileController::class, 'detail'])->name('profile.detail');
+        Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::post('/update', [ProfileController::class, 'update'])->name('profile.update');
+    });
 
 
 });
