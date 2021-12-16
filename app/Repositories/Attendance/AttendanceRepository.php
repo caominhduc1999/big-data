@@ -6,6 +6,7 @@ use App\Repositories\Attendance\AttendanceRepositoryInterface;
 use App\Repositories\RepositoryAbstract;
 use App\Models\Attendance;
 use Carbon\Carbon;
+use \Illuminate\Support\Facades\DB;
 
 class AttendanceRepository extends RepositoryAbstract implements AttendanceRepositoryInterface
 {
