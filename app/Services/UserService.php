@@ -71,4 +71,14 @@ class UserService
     {
         return $this->userRepository->delete($id);
     }
+
+    public function getTotalCustomer()
+    {
+        return $this->userRepository->getTotalCustomer();
+    }
+
+    public function getTotalStaff()
+    {
+        return $this->userRepository->getTotalStaff();
+    }
 }

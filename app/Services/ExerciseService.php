@@ -32,4 +32,9 @@ class ExerciseService
     {
         return $this->exerciseRepository->delete($id);
     }
+
+    public function getTotalExercise()
+    {
+        return $this->exerciseRepository->all()->count();
+    }
 }

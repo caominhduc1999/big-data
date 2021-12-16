@@ -18,4 +18,14 @@ class UserRepository extends RepositoryAbstract implements UserRepositoryInterfa
         return $this->model
             ->paginate($perPage);
     }
+
+    public function getTotalCustomer()
+    {
+        return $this->model->where('role', "1")->count();
+    }
+
+    public function getTotalStaff()
+    {
+        return $this->model->where('role', "2")->count();
+    }
 }
