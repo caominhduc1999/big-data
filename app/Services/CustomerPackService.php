@@ -32,4 +32,8 @@ class CustomerPackService
     {
         return $this->customerPackRepository->delete($id);
     }
+    public function getRevenue($date)
+    {
+        return $this->customerPackRepository->getRevenue($date);
+    }
 }

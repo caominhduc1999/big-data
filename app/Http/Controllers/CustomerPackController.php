@@ -33,9 +33,12 @@ class CustomerPackController extends Controller
     public function index()
     {
         $customer_packs = $this->customerPackService->getAll();
+
         $customer = $this->customerService->getAll()->pluck('name','_id')->toArray();
         $service = $this->serviceService->getAll()->pluck('name','_id')->toArray();
-        return view('pages.customer_packs.index',compact('customer_packs','customer','service'));
+        $price = $this->serviceService->getAll()->pluck('price','_id')->toArray();
+
+        return view('pages.customer_packs.index',compact('customer_packs','customer','service','price'));
     }
 
     /**

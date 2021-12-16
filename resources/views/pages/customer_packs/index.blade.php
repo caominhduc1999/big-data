@@ -48,7 +48,7 @@
                                                 <td>{{ $customer[$pack->customer_id] }}</td>
                                                 <td>{{ $service[$pack->service_id] }}</td>
                                                 <td>{{ $pack->payment_id }}</td>
-                                                <td>{{ $pack->price }}</td>
+                                                <td>{{ $price[$pack->service_id] }}</td>
                                                 <td>{{ $pack->start_date }}</td>
                                                 <td>{{ $pack->end_date }}</td>
                                                 <td>

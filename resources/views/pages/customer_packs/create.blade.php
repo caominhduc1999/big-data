@@ -48,23 +48,7 @@
                                                         <span class="alert-danger"><?php echo $errors->first('service_id'); ?></span>
                                                 </div>
                                             </div>
-                                            {{--<div class="col-xs-12 col-sm-12 col-md-12">
-                                                    <select class="selectpicker" style="width:300px;"> >
-                                                        <option value="" selected>--Select--</option>
-                                                        <option>Mustard</option>
-                                                        <option>Ketchup</option>
-                                                        <option>Barbecue</option>
-                                                    </select>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <div class="form-group">
-                                                    <strong>Payment:</strong>
-                                                        @foreach($payments as $key => $payment)
-                                                            <option value="{{ $payment->_id}}">{{$payment->name}}</option>
-                                                        @endforeach
-                                                    <span class="alert-danger"><?php echo $errors->first('payment_id'); ?></span>
-                                                </div>
-                                            </div> --}}
+
 
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
