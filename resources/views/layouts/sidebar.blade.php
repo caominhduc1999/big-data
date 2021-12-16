@@ -20,17 +20,6 @@
                 </div>
                 @endif
 
-                <!-- SidebarSearch Form -->
-                <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
@@ -83,6 +72,12 @@
                             <a href="/attendances" class="nav-link {{ request()->is('attendances*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Checkin</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/recommend-system" class="nav-link {{ request()->is('recommend-system*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Shop</p>
                             </a>
                         </li>
                         <li class="nav-item">
