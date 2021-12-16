@@ -36,4 +36,8 @@ class CustomerPackService
     {
         return $this->customerPackRepository->getRevenue($date);
     }
+    public function getCutomerPackAmount($date)
+    {
+        return $this->customerPackRepository->getCutomerPackAmount($date);
+    }
 }

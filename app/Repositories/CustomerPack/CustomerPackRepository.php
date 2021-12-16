@@ -26,7 +26,16 @@ class CustomerPackRepository extends RepositoryAbstract implements CustomerPackR
     }
     public function getRevenue($date)
     {
-        $a = $this->model->select('price')->whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->count();
+        $a = $this->model->whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->get()->sum('price');
+        
+        return $a;
+    }
+
+
+    public function getCutomerPackAmount($date)
+    {
+        $a = $this->model->whereBetween('created_at', [Carbon::parse($date)->startOfDay(), Carbon::parse($date)->endOfDay()])->count();
+        
         return $a;
     }
 

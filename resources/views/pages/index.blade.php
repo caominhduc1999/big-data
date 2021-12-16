@@ -74,6 +74,7 @@
 <script>
   let comerDataset = @json($comerDataset);
   let revenueDataset = @json($revenue);
+  let customerPackDataset = @json($customerPack);
 
   const labels = Object.keys(comerDataset);
 
@@ -84,6 +85,12 @@
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgb(255, 99, 132)',
         data: Object.values(comerDataset),
+      },
+      {
+        label: 'Số gói tập đăng ký',
+        backgroundColor: 'rgb(2, 1, 255)',
+        borderColor: 'rgb(2, 1, 255)',
+        data: Object.values(customerPackDataset),
       },
     ]
   };
@@ -103,13 +110,12 @@
   const data_revenue = {
     labels: label_revenue,
     datasets: [{
-        label: 'Doanh thu',
+        label: 'Doanh thu (VNĐ)',
         backgroundColor: 'rgb(99, 255, 132)',
-        borderColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(99, 255, 132)',
         data: Object.values(revenueDataset),
       },
       ]
-      //lam han ra chart kahc di b
   };
 
   const config_revenue = {

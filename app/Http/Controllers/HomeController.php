@@ -33,6 +33,7 @@ class HomeController extends Controller
     public function index()
     {
         $comerDataset = array();
+        $customerPack = array();
         $now = Carbon::now();
         $month = $now->month;
         $year = $now->year;
@@ -44,12 +45,13 @@ class HomeController extends Controller
                 $date = date('Y-m-d', $time);
                 $comerDataset[$date] = $this->attendanceService->getComerStatistic($date);
                 $revenue[$date] = $this->customerPackService->getRevenue($date);
+                $customerPack[$date] = $this->customerPackService->getCutomerPackAmount($date);
         }
 
         $userTotal = $this->userService->getTotalCustomer();
         $staffTotal = $this->userService->getTotalStaff();
         $exercises = $this->exerciseService->getTotalExercise();
 
-        return view('pages.index', compact('comerDataset', 'userTotal', 'staffTotal', 'exercises', 'revenue'));
+        return view('pages.index', compact('comerDataset', 'userTotal', 'staffTotal', 'exercises', 'revenue', 'customerPack'));
     }
 }
