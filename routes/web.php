@@ -13,6 +13,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\UserController;
+use App\Models\HealthStatus;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 
@@ -147,4 +149,19 @@ Route::get('/recommend-system', function () {
 
     return view('recommend_system', compact('selectedId', 'selectedProduct', 'products'));
 
+});
+
+Route::get('fake-data-health-status', function() {
+    $userArray = User::all()->pluck('_id')->toArray();
+    
+    for ($i = 0; $i < 10; $i++) {
+        HealthStatus::create([
+            'customer_id' => $userArray[array_rand($userArray)],
+            'calories' => (String) rand(10, 30),
+            'fat_percentage' => (String) rand(10, 30),
+            'height' => (String) rand(150, 180),
+            'weight' => (String) rand(40, 80),
+            'remark' => (String) (rand(10, 50) / 10),
+        ]);
+    }
 });
