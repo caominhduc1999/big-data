@@ -45,7 +45,7 @@
                                         @foreach($healths as $key => $health)
                                             <tr class="{{ $key % 2 == 0 ? 'odd' : 'even' }}">
                                                 <td class="dtr-control sorting_1" tabindex="0">{{ $health->_id }}</td>
-                                                <td>{{ $customer[$health->customer_id] }}</td>
+                                                <td>{{ $customer[$health->customer_id] ?? '' }}</td>
                                                 <td>{{ $health->calories }}</td>
                                                 <td>{{ $health->fat_percentage }}</td>
                                                 <td>{{ $health->height }}</td>
@@ -60,7 +60,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                            </div>
+                            </div>    
                         </div>
                     </div>
                 </div>

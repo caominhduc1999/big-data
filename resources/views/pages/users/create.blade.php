@@ -85,21 +85,21 @@
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
-                                                    <strong>Vai trò:</strong>
+                                                    <strong>Role:</strong>
                                                     <select class="form-control" name="role" id="role">
-                                                        <option value="">--Chọn--</option>
-                                                        <option value="0">ADMIN</option>
-                                                        <option value="1">Khách hàng</option>
-                                                        <option value="2">Nhân viên</option>
+                                                        <option value="">--Select--</option>
+                                                        <option value="0">Admin</option>
+                                                        <option value="1">Customer</option>
+                                                        <option value="2">Employee</option>
                                                     </select>
                                                     <span class="alert-danger"><?php echo $errors->first('role'); ?></span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12" id="customer_type">
                                                 <div class="form-group">
-                                                    <strong>Loại khách hàng:</strong>
+                                                    <strong>Customer Type:</strong>
                                                     <select class="form-control" name="customer_type_id" id="">
-                                                        <option value="">--Chọn--</option>
+                                                        <option value="">--Select--</option>
                                                         @foreach($customerTypes as $customerType)
                                                             <option value="{{ $customerType->id }}">{{ $customerType->customer_type_name }}</option>
                                                         @endforeach
@@ -109,9 +109,9 @@
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12" id="employee_type">
                                                 <div class="form-group">
-                                                    <strong>Loại nhân viên:</strong>
+                                                    <strong>Employee Type:</strong>
                                                     <select class="form-control" name="employee_type_id" id="">
-                                                        <option value="">--Chọn--</option>
+                                                        <option value="">--Select--</option>
                                                         @foreach($employeeTypes as $employeeType)
                                                             <option value="{{ $employeeType->id }}">{{ $employeeType->name }}</option>
                                                         @endforeach

@@ -34,7 +34,7 @@
 
             <div class="offset-3 col-6">
 
-                <h5>Sản phẩm đang xem</h5>
+                <h5>Previewing Product</h5>
 
             </div>
 
@@ -68,7 +68,7 @@
 
             <div class="offset-3 col-6">
 
-                <h5>Sản phẩm tương tự</h5>
+                <h5>Related Products</h5>
 
             </div>
 
@@ -90,7 +90,7 @@
 
                     <div class="card-body">
 
-                        <h5 class="card-title">Độ tương đồng: {{ round($product->similarity * 100, 1) }}%</h5>
+                        <h5 class="card-title">Similarity Percent: {{ round($product->similarity * 100, 1) }}%</h5>
 
                         <p class="card-text text-muted">{{ $product->name }} (${{ $product->price }})</p>
 

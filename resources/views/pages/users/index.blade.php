@@ -15,7 +15,7 @@
                     <div class="box-header">
                         <div class="col-sm-12">
                             <a class="btn btn-success" href="{{route('users.create')}}">
-                            	<!-- <i class="fa fa-plus"></i> --> Thêm mới
+                            	<!-- <i class="fa fa-plus"></i> --> Add new
                             </a>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                                                     ? $customerTypes[$user->customer_type_id] 
                                                     : ($user->employee_type_id != null 
                                                         ? $employeeTypes[$user->employee_type_id] 
-                                                        : 'ADMIN')
+                                                        : 'Admin')
                                                 }}</td>
                                                 <td>
                                                     <a href="{{ route('editUser',['id' =>  $user->_id])}}">Edit</a>

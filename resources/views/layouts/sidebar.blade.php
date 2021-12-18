@@ -41,31 +41,37 @@
                         <li class="nav-item">
                             <a href="/employee_types" class="nav-link {{ request()->is('employee_types*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Loại nhân viên</p>
+                                <p>Employee Type</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/customer_types" class="nav-link {{ request()->is('customer_types*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Loại khách hàng</p>
+                                <p>Customer Type</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/customer_packs" class="nav-link {{ request()->is('customer_packs*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Khách hàng - Dịch vụ</p>
+                                <p>Customer - Service</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/services" class="nav-link {{ request()->is('services*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Dịch vụ</p>
+                                <p>Service</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/exercises" class="nav-link {{ request()->is('exercises*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Bài tập</p>
+                                <p>Exercises</p>
+                            </a>
+                        </li>
+                         <li class="nav-item">
+                            <a href="/health_statuses" class="nav-link {{ request()->is('health_statuses*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Health Status</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -82,7 +88,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="/qr-code" class="nav-link {{ request()->is('qr-code*') ? 'active' : '' }}">
-                            <i class="nav-icon far fa-image"></i>
+                            <i class="nav-icon far fa-circle"></i>
                             <p>
                                 QR CODE
                             </p>
@@ -90,7 +96,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="/logout" class="nav-link">
-                            <i class="nav-icon far fa-image"></i>
+                            <i class="nav-icon far fa-circle"></i>
                             <p>
                                 Logout
                             </p>

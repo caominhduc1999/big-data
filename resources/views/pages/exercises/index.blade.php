@@ -15,7 +15,7 @@
                     <div class="box-header">
                         <div class="col-sm-12">
                             <a class="btn btn-success" href="{{route('exercises.create')}}">
-                            	<!-- <i class="fa fa-plus"></i> --> Thêm mới
+                            	<!-- <i class="fa fa-plus"></i> --> Add new
                             </a>
                         </div>
                     </div>

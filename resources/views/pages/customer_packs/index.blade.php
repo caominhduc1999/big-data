@@ -15,7 +15,7 @@
                     <div class="box-header">
                         <div class="col-sm-12">
                             <a class="btn btn-success" href="{{route('customer_packs.create')}}">
-                            	<!-- <i class="fa fa-plus"></i> --> Thêm mới
+                            	<!-- <i class="fa fa-plus"></i> --> Add new
                             </a>
                         </div>
                     </div>
@@ -45,10 +45,10 @@
                                         @foreach($customer_packs as $key => $pack)
                                             <tr class="{{ $key % 2 == 0 ? 'odd' : 'even' }}">
                                                 <td class="dtr-control sorting_1" tabindex="0">{{ $pack->_id }}</td>
-                                                <td>{{ $customer[$pack->customer_id] }}</td>
-                                                <td>{{ $service[$pack->service_id] }}</td>
+                                                <td>{{ $customer[$pack->customer_id] ?? '' }}</td>
+                                                <td>{{ $service[$pack->service_id] ?? '' }}</td>
                                                 <td>{{ $pack->payment_id }}</td>
-                                                <td>{{ $price[$pack->service_id] }}</td>
+                                                <td>{{ number_format($price[$pack->service_id] ?? '') }}</td>
                                                 <td>{{ $pack->start_date }}</td>
                                                 <td>{{ $pack->end_date }}</td>
                                                 <td>

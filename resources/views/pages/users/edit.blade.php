@@ -85,18 +85,18 @@
                                                     <strong>Roles:</strong>
                                                     <select class="form-control" name="role" value="{{$user->gender}}" id="role">
                                                         <option value="">--Chọn--</option>
-                                                        <option value="0" @if($user->role == 0) selected @endif>ADMIN</option>
-                                                        <option value="1" @if($user->role == 1) selected @endif>Khách hàng</option>
-                                                        <option value="2" @if($user->role == 2) selected @endif>Nhân viên</option>
+                                                        <option value="0" @if($user->role == 0) selected @endif>Admin</option>
+                                                        <option value="1" @if($user->role == 1) selected @endif>Customer</option>
+                                                        <option value="2" @if($user->role == 2) selected @endif>Employee</option>
                                                     </select>
                                                     <span class="alert-danger"><?php echo $errors->first('role'); ?></span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12" id="customer_type">
                                                 <div class="form-group">
-                                                    <strong>Loại khách hàng:</strong>
+                                                    <strong>Customer Type:</strong>
                                                     <select class="form-control" name="customer_type_id" id="">
-                                                        <option value="">--Chọn--</option>
+                                                        <option value="">--Select--</option>
                                                         @foreach($customerTypes as $customerType)
                                                             <option @if($user->customer_type_id == $customerType->id) selected @endif value="{{ $customerType->id }}">{{ $customerType->customer_type_name }}</option>
                                                         @endforeach
@@ -106,9 +106,9 @@
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12" id="employee_type">
                                                 <div class="form-group">
-                                                    <strong>Loại nhân viên:</strong>
+                                                    <strong>Employee Type:</strong>
                                                     <select class="form-control" name="employee_type_id" id="">
-                                                        <option value="">--Chọn--</option>
+                                                        <option value="">--Select--</option>
                                                         @foreach($employeeTypes as $employeeType)
                                                             <option @if($user->employee_type_id == $employeeType->id) selected @endif value="{{ $employeeType->id }}">{{ $employeeType->name }}</option>
                                                         @endforeach
