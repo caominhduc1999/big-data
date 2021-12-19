@@ -18,7 +18,7 @@ class UserController extends Controller
     protected $employeeTypes;
 
     public function __construct(
-        UserService $userService, 
+        UserService $userService,
         CustomerType $customerType,
         EmployeeType $employeeType
     ) {
@@ -117,7 +117,7 @@ class UserController extends Controller
     {
         $item = User::find($id);
         $item->delete();
-        return redirect()->route('Users.index')->with('message','Item delete successfully !');
+        return redirect()->route('users.index')->with('message','Item delete successfully !');
         // try {
         //     $this->UserService->destroy($User);
 

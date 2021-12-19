@@ -40,7 +40,7 @@ class UserService
             $image->move(public_path('images'), $imageName);
             $data['image'] = $imageName;
         }
-        
+
         return $this->userRepository->store($data);
     }
 
@@ -58,8 +58,8 @@ class UserService
             $data['customer_type_id'] = null;
             $data['employee_type_id'] = null;
         }
-        
-        if ($data['image']) {
+
+        if (!empty($data['image'])) {
             $image = $data['image'];
             $imageName = rand() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('images'), $imageName);
