@@ -15,7 +15,7 @@
                     <div class="box-header">
                         <div class="col-sm-12">
                             <a class="btn btn-success" href="{{route('health_statuses.create')}}">
-                            	<!-- <i class="fa fa-plus"></i> --> Thêm mới
+                            	<!-- <i class="fa fa-plus"></i> --> Add new
                             </a>
                         </div>
                     </div>
@@ -52,9 +52,9 @@
                                                 <td>{{ $health->weight }}</td>
                                                 <td>{{ $health->remark }}</td>
                                                 <td>
-                                                    <a href="{{ route('showStatus',['id' =>  $health->_id])}}">Show</a>
-                                                    <a href="{{ route('editStatus',['id' =>  $health->_id])}}">Edit</a>
-                                                    <a href="{{ route('deleteStatus',['id' =>  $health->_id])}}" onclick="return confirm('Are you sure to delete ?')">Delete</a>
+                                                    <!-- <a href="{{ route('showStatus',['id' =>  $health->_id])}}">Show</a> -->
+                                                    <a href="{{ route('editStatus',['id' =>  $health->_id])}}"><i class="fas fa-edit"></i>Edit</a>
+                                                    <a href="{{ route('deleteStatus',['id' =>  $health->_id])}}" onclick="return confirm('Are you sure to delete ?')"><i class="fas fa-trash"></i>Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach

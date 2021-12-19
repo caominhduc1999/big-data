@@ -50,8 +50,8 @@
                                                 <td>{{ $employee->gender }}</td>
                                                 <td>{{ $employee->hire_date }}</td>
                                                 <td>
-                                                    <a href="{{ route('editEmployee',['id' =>  $employee->_id])}}">Edit</a>
-                                                    <a href="{{ route('deleteEmployee',['id' =>  $employee->_id])}}" onclick="return confirm('Are you sure to delete ?')">Delete</a>
+                                                    <a href="{{ route('editEmployee',['id' =>  $employee->_id])}}"><i class="fas fa-edit"></i>Edit</a>
+                                                    <a href="{{ route('deleteEmployee',['id' =>  $employee->_id])}}" onclick="return confirm('Are you sure to delete ?')"><i class="fas fa-trash"></i>Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach

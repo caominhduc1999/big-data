@@ -44,9 +44,9 @@
                                                 <td>{{ $exercice->name }}</td>
                                                 <td>{{ $exercice->video_link }}</td>
                                                 <td>
-                                                    <a href="{{ route('showExercise',['id' =>  $exercice->_id])}}">Show</a>
-                                                    <a href="{{ route('editExercise',['id' =>  $exercice->_id])}}">Edit</a>
-                                                    <a href="{{ route('deleteExercise',['id' =>  $exercice->_id])}}" onclick="return confirm('Are you sure to delete ?')">Delete</a>
+                                                    <a href="{{ route('showExercise',['id' =>  $exercice->_id])}}"><i class="fas fa-eye"></i>Show</a>
+                                                    <a href="{{ route('editExercise',['id' =>  $exercice->_id])}}"><i class="fas fa-edit"></i>Edit</a>
+                                                    <a href="{{ route('deleteExercise',['id' =>  $exercice->_id])}}" onclick="return confirm('Are you sure to delete ?')"><i class="fas fa-trash"></i>Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach

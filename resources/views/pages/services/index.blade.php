@@ -46,8 +46,8 @@
                                                 <td>{{ $service->description }}</td>
                                                 <td>{{ $service->price }}</td>
                                                 <td>
-                                                    <a href="{{ route('editService',['id' =>  $service->_id])}}">Edit</a>
-                                                    <a href="{{ route('deleteService',['id' =>  $service->_id])}}" onclick="return confirm('Are you sure to delete ?')">Delete</a>
+                                                    <a href="{{ route('editService',['id' =>  $service->_id])}}"><i class="fas fa-edit"></i>Edit</a>
+                                                    <a href="{{ route('deleteService',['id' =>  $service->_id])}}" onclick="return confirm('Are you sure to delete ?')"><i class="fas fa-trash"></i>Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach

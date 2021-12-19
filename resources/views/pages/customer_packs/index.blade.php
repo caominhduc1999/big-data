@@ -52,8 +52,8 @@
                                                 <td>{{ $pack->start_date }}</td>
                                                 <td>{{ $pack->end_date }}</td>
                                                 <td>
-                                                    <a href="{{ route('editCustomerPack',['id' =>  $pack->_id])}}">Edit</a>
-                                                    <a href="{{ route('deleteCustomerPack',['id' =>  $pack->_id])}}" onclick="return confirm('Are you sure to delete ?')">Delete</a>
+                                                    <a href="{{ route('editCustomerPack',['id' =>  $pack->_id])}}"><i class="fas fa-edit"></i>Edit</a>
+                                                    <a href="{{ route('deleteCustomerPack',['id' =>  $pack->_id])}}" onclick="return confirm('Are you sure to delete ?')"><i class="fas fa-trash"></i>Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach

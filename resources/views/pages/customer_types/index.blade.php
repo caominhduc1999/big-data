@@ -44,8 +44,8 @@
                                                 <td>{{ $type->customer_type_name }}</td>
                                                 <td>{{ $type->description }}</td>
                                                 <td>
-                                                    <a href="{{ route('editCustomerType',['id' =>  $type->_id])}}">Edit</a>
-                                                    <a href="{{ route('deleteCustomerType',['id' =>  $type->_id])}}" onclick="return confirm('Are you sure to delete ?')">Delete</a>
+                                                    <a href="{{ route('editCustomerType',['id' =>  $type->_id])}}"><i class="fas fa-edit"></i>Edit</a>
+                                                    <a href="{{ route('deleteCustomerType',['id' =>  $type->_id])}}" onclick="return confirm('Are you sure to delete ?')"><i class="fas fa-trash"></i>Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach

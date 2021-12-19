@@ -154,7 +154,7 @@ Route::get('/recommend-system', function () {
 Route::get('fake-data-health-status', function() {
     $userArray = User::all()->pluck('_id')->toArray();
     
-    for ($i = 0; $i < 10; $i++) {
+    for ($i = 0; $i < 1000; $i++) {
         HealthStatus::create([
             'customer_id' => $userArray[array_rand($userArray)],
             'calories' => (String) rand(10, 30),

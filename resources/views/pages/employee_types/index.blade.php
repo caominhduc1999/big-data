@@ -42,8 +42,8 @@
                                                 <td class="dtr-control sorting_1" tabindex="0">{{ $type->_id }}</td>
                                                 <td>{{ $type->name }}</td>
                                                 <td>
-                                                    <a href="{{ route('editEmployeeType',['id' =>  $type->_id])}}">Edit</a>
-                                                    <a href="{{ route('deleteEmployeeType',['id' =>  $type->_id])}}" onclick="return confirm('Are you sure to delete ?')">Delete</a>
+                                                    <a href="{{ route('editEmployeeType',['id' =>  $type->_id])}}"><i class="fas fa-edit"></i>Edit</a>
+                                                    <a href="{{ route('deleteEmployeeType',['id' =>  $type->_id])}}" onclick="return confirm('Are you sure to delete ?')"><i class="fas fa-trash"></i>Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -34,10 +34,12 @@ class UserService
             $data['employee_type_id'] = null;
         }
 
-        $image = $data['image'];
-        $imageName = rand() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('images'), $imageName);
-        $data['image'] = $imageName;
+        if (isset($data['image'])) {
+            $image = $data['image'];
+            $imageName = rand() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $imageName);
+            $data['image'] = $imageName;
+        }
         
         return $this->userRepository->store($data);
     }

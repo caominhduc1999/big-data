@@ -8,7 +8,7 @@
       <div class="inner">
         <h3>{{ $userTotal }}</h3>
 
-        <p>Tổng số users</p>
+        <p>Total users</p>
       </div>
       <div class="icon">
         <i class="ion ion-bag"></i>
@@ -23,7 +23,7 @@
       <div class="inner">
         <h3>{{ $staffTotal }}</h3>
 
-        <p>Tổng số huấn luyện viên</p>
+        <p>Total Employees</p>
       </div>
       <div class="icon">
         <i class="ion ion-stats-bars"></i>
@@ -38,7 +38,7 @@
       <div class="inner">
         <h3>{{ $exercises }}</h3>
 
-        <p>Tổng số bài tập</p>
+        <p>Total exercises</p>
       </div>
       <div class="icon">
         <i class="ion ion-person-add"></i>
@@ -53,7 +53,7 @@
       <div class="inner">
         <h3>65%</h3>
 
-        <p>Tần suất người đến tập</p>
+        <p>Visitor rate</p>
       </div>
       <div class="icon">
         <i class="ion ion-pie-graph"></i>
@@ -81,13 +81,13 @@
   const data = {
     labels: labels,
     datasets: [{
-        label: 'Số người đến tập',
+        label: 'Visitors',
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgb(255, 99, 132)',
         data: Object.values(comerDataset),
       },
       {
-        label: 'Số gói tập đăng ký',
+        label: 'Register Pack',
         backgroundColor: 'rgb(2, 1, 255)',
         borderColor: 'rgb(2, 1, 255)',
         data: Object.values(customerPackDataset),
@@ -110,7 +110,7 @@
   const data_revenue = {
     labels: label_revenue,
     datasets: [{
-        label: 'Doanh thu (VNĐ)',
+        label: 'Revenue (USD)',
         backgroundColor: 'rgb(99, 255, 132)',
         borderColor: 'rgb(99, 255, 132)',
         data: Object.values(revenueDataset),
